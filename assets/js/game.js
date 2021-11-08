@@ -1,14 +1,14 @@
 const question = document.querySelector('#question');
 const choices = Array.from(document.querySelectorAll('.choice-text'));
-const scoreText = document.querySelector('#score');
 const progressText = document.querySelector('#progressText');
+const scoreText = document.querySelector('#score');
 const progressBarFull = document.querySelector('#progressBarFull');
 
 let currentQuestion = {}
 let acceptingAnswers = true
 let score = 0
 let questionCounter = 0
-let avaibleQuestions = []
+let availableQuestions = []
 
 let questions = [
  {
@@ -35,22 +35,24 @@ const MAX_QUESTIONS = 2
 startGame = () => {
  questionCounter = 0
  score = 0
- avaibleQuestions = [...questions]
- getNewQuestions()
+ availableQuestions = [...questions]
+ getNewQuestion()
 }
 
 getNewQuestion = () => {
- if (avaibleQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
+ if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
   localStorage.setItem('mostRecentScore', score)
+
   return window.location.assign('/end.html')
  }
 
  questionCounter++
- progressText.innerText = 'Question ${questionCounter} of ${MAX_QUESTIONS}'
- progressBarFull.style.widht = '${(questionCounter/MAX_QUESTIONS) * 100}%'
+ progressText.innerText = 'Question' + questionCounter + ' of ' + MAX_QUESTIONS
+ // progressBarFull.style.width = `${(questionCounter/MAX_QUESTIONS) * 100}%`
+    
 
- const questionsIndex = Math.floor(Math.random() * avaibleQuestions.length)
- currentQuestion = avaibleQuestions[questionsIndex]
+ const questionsIndex = Math.floor(Math.random() * availableQuestions.length)
+ currentQuestion = availableQuestions[questionsIndex]
  question.innerText = currentQuestion.question
 
  choices.forEach(choice => {
@@ -58,7 +60,7 @@ getNewQuestion = () => {
   choice.innerText = currentQuestion['choice' + number]
  })
 
- avaibleQuestions.splice(questionsIndex, 1)
+ availableQuestions.splice(questionsIndex, 1)
 
  acceptingAnswers = true
 }
