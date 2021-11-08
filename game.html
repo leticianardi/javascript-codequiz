@@ -14,9 +14,19 @@
 
 <body>
 
-    <div class="container">
+    <main class="container">
         <div id="game" class="justify-center flex-column">
             <div id="hud">
+
+                <div class="hud-item">
+                    <p id="timerCountdown" class="hud-prefix">
+                        Timer
+                    </p>
+                    <h1 class="hud-main-text" id="timer">
+                        0
+                    </h1>
+                </div>
+
                 <div class="hud-item">
                     <p id="progressText" class="hud-prefix">
                         Question
@@ -25,7 +35,7 @@
                         <!-- <div id="progessBarFull"></div> -->
                     <!-- </div> -->
                 </div>
-                
+
                 <div class="hud-item">
                     <p class="hud-prefix">
                         Score
@@ -54,7 +64,7 @@
                 <p class="choice-text" data-number="4">Choice</p>
             </div>
         </div>
-    </div>
+    </main>
 
     <script src=assets/js/game.js></script>
 

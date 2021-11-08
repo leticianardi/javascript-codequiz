@@ -3,6 +3,7 @@ const choices = Array.from(document.querySelectorAll('.choice-text'));
 const progressText = document.querySelector('#progressText');
 const scoreText = document.querySelector('#score');
 const progressBarFull = document.querySelector('#progressBarFull');
+const timerCountdown = document.querySelector('#timerCountdown');
 
 let currentQuestion = {}
 let acceptingAnswers = true
@@ -34,10 +35,21 @@ let questions = [
 const SCORE_POINTS = 100
 const MAX_QUESTIONS = 2
 
-startGame = () => {
+function startGame() {
  questionCounter = 0
  score = 0
+ time = 75
  availableQuestions = [...questions]
+
+ timer = setInterval(function () {
+   time--
+   timerCountdown.textContent = time
+
+   if (time <= 0) {
+    return window.location.assign('/end.html')
+   }
+ }, 1000)
+
  getNewQuestion()
 }
 
@@ -59,17 +71,19 @@ function getNewQuestion() {
  currentQuestion = availableQuestions[questionsIndex]
  question.innerText = currentQuestion.question
 
- // set and show the right answer
+ // show the answers
  choices.forEach(function (choice)  {
   const number = choice.dataset['number']
   choice.innerText = currentQuestion['choice' + number]
  })
 
+ // replace question 
  availableQuestions.splice(questionsIndex, 1)
 
  acceptingAnswers = true
 }
 
+// change colors of answers when correct and wrong
 choices.forEach(function (choice) {
  choice.addEventListener('click', e => {
   if (!acceptingAnswers) return
@@ -93,6 +107,7 @@ choices.forEach(function (choice) {
  })
 })
 
+// reduce score if the answer is wrong
 incrementScore = num => {
  score += num
  scoreText.innerText = score
