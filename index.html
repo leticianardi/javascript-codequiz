@@ -6,20 +6,43 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link rel="stylesheet" href="/assets/css/style.css">
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-
-
+ <link rel="stylesheet" href="/assets/css/game.css">
  <title>JavaScript Quiz</title>
 </head>
 <body>
  
  <div class="container">
-  <div id="home" class="flex-column flex-center">
-   <h1>Are you ready?</h1>
-   <a href="/game.html" class="btn">Play</a>
-   <a href="/highscores.html" id="highscore-btn" class="btn">High Scores <i class="fas fa-crown"></i></a>
+  <div id="game" class="justify-center flex-column">
+   <div id="hud">
+    <div class="hud-item">
+     <p id="progressText" class="hud-prefix">
+      Question
+     </p>
+     <div id="progessBar">
+      <div id="progessBarFull"></div>
+     </div>
+    </div>
+    <div class="hud-item">
+     <p class="hud-prefix">
+      Score
+     </p>
+     <h1 class="hud-main-text" id="score">
+      0
+     </h1>
+    </div>
+   </div>
+   <div id="question">Whats the answer to this question</div>
+   <div class="chioce-container">
+    <p class="choice-prefix">A</p>
+    <p class="choice-text" data-number="1">Choice</p>
+    <p class="choice-text" data-number="2">Choice</p>
+    <p class="choice-text" data-number="3">Choice</p>
+    <p class="choice-text" data-number="4">Choice</p>
+   </div>
   </div>
  </div>
 
- <script></script>
+ <script src=game.js></script>
+
 </body>
 </html>
