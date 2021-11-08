@@ -29,7 +29,7 @@ p {
 }
 
 .container {
- width: 100vw;
+ width: 80vw;
  height: 100vh;
  display: flex;
  justify-content: center;
@@ -51,6 +51,10 @@ p {
 
 .justify-center {
  justify-content: center;
+}
+
+.justify-center-index {
+ justify-content: center;
  align-items: center;
 }
 
@@ -65,7 +69,7 @@ p {
 .btn {
  font-size: 2.4rem;
  padding: 2rem 0;
- width: 30rem;
+ width: 25rem;
  text-align: center;
  margin-bottom: 1rem;
  text-decoration: none;
@@ -142,4 +146,23 @@ input::placeholder {
  margin-left: 1rem;
  font-size: 1rem;
  color: black;
+}
+
+/* media query */
+@media screen and (max-width: 980px) {
+ .container, .choice-container {
+  min-width: fit-content;
+ }
+}
+
+@media screen and (max-width: 768px) {
+ .container, .choice-container {
+     min-width: fit-content;
+ }
+}
+
+@media screen and (max-width: 575px) {
+ .container, .choice-container {
+  min-width: fit-content;
+}
 }

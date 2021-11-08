@@ -10,14 +10,16 @@ let score = 0
 let questionCounter = 0
 let availableQuestions = []
 
+var questionIndex = 0;
+
 let questions = [
  {
-  question: 'pergunta aqui?',
-  choice1: 'resp 1',
-  choice2: 'certa',
-  choice3: 'resp 3',
-  choice4: 'resp 4',
-  answer: 2,
+  question: "What's JavaScript?",
+    choice1: "It's a rule-based language for styling pages",
+    choice2: "It's a scripting language",
+    choice3:"It's the standar markup language for web pages",
+    choice4:"It's a function on Python",
+  answer: "It's a scripting language",
  },
  {
   question: 'pergunta aqui 2?',
@@ -39,22 +41,26 @@ startGame = () => {
  getNewQuestion()
 }
 
-getNewQuestion = () => {
+function getNewQuestion() {
+  // store score and return to save score page 
  if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
   localStorage.setItem('mostRecentScore', score)
 
   return window.location.assign('/end.html')
-}
+  }
 
+  //count questions on top of page
  questionCounter++
  progressText.innerText = 'Question' + questionCounter + ' of ' + MAX_QUESTIONS
  // progressBarFull.style.width = ` ${(questionCounter/MAX_QUESTIONS) * 100}% `
 
+ // show the queston in a random order
  const questionsIndex = Math.floor(Math.random() * availableQuestions.length)
  currentQuestion = availableQuestions[questionsIndex]
  question.innerText = currentQuestion.question
 
- choices.forEach(choice => {
+ // set and show the right answer
+ choices.forEach(function (choice)  {
   const number = choice.dataset['number']
   choice.innerText = currentQuestion['choice' + number]
  })
@@ -64,7 +70,7 @@ getNewQuestion = () => {
  acceptingAnswers = true
 }
 
-choices.forEach(choice => {
+choices.forEach(function (choice) {
  choice.addEventListener('click', e => {
   if (!acceptingAnswers) return
   
