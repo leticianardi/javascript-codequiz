@@ -2,6 +2,11 @@ body {
  color: white;
 }
 
+.question {
+ font-size: 5.4rem;
+ color: white;
+ margin-bottom: 5rem;
+}
 .choice-container {
  display: flex;
  margin-bottom: 0.8rem;
