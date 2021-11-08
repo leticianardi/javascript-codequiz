@@ -46,6 +46,6 @@ getNewQuestion = () => {
  }
 
  questionCounter++
- progressText.innerText = 'Question ${questionCounter} of ${MAX_QUESTIONS}'
- progressBarFull.style.widht = '${(questionCounter/MAX_QUESTIONS) * 100}%'
+ progressText.innerText = 'Question'+ ${questionCounter} + 'of' + ${MAX_QUESTIONS}
+ progressBarFull.style.widht = ${(questionCounter/MAX_QUESTIONS) * 100}%
 }
