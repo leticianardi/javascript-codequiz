@@ -88,7 +88,7 @@ function getNewQuestion() {
 
   //count questions on top of page
  questionCounter++
- progressText.innerText = 'Question' + questionCounter + ' of ' + MAX_QUESTIONS
+ progressText.innerText = 'Question ' + questionCounter + ' of ' + MAX_QUESTIONS
  // progressBarFull.style.width = ` ${(questionCounter/MAX_QUESTIONS) * 100}% `
 
  // show the queston in a random order
