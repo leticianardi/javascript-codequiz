@@ -7,38 +7,63 @@ const timerCountdown = document.querySelector('#timerCountdown');
 
 let currentQuestion = {}
 let acceptingAnswers = true
-let score = 0
+let score = 1000
 let questionCounter = 0
 let availableQuestions = []
 
 var questionIndex = 0;
 
+
 let questions = [
+  {
+    question: "What's the Console keyword?",
+      choice1: "It consoles the user when they are crying",
+      choice2: "It prints a message in the console tab",
+      choice3: "It loops through an array",
+      choice4: "It adds a new element",
+    answer: 2,
+   },
  {
   question: "What's JavaScript?",
     choice1: "It's a rule-based language for styling pages",
     choice2: "It's a scripting language",
     choice3:"It's the standar markup language for web pages",
     choice4:"It's a function on Python",
-  answer: "It's a scripting language",
+  answer: 2,
  },
  {
-  question: 'pergunta aqui 2?',
-  choice1: 'resp 1',
-  choice2: 'resp 2',
-  choice3: 'resp 3',
-  choice4: 'certa',
+  question: "Which of the following examples is not an array?",
+    choice1: "var house = new Array(10, 20, 30, 40, 50);",
+    choice2: "var house1 = new Array(5);",
+    choice3: "var = window.alert('Front door open')",
+    choice4: "var house = ['living room', 'bedroom', 'bathroom']",
+  answer: 3,
+ },
+ {
+  question: "What does Array.from() allow you to do?",
+    choice1: "It returns an array from any object with a length property",
+    choice2: "It creates a new variable",
+    choice3: "It gathers all arrays you've created into a new array",
+    choice4: "It prints the array elements on the console bowser",
+  answer: 1,
+ },
+ {
+  question: "What's the usage of Array.forEach()?",
+    choice1: "It sets a new name for each arry you've already writen",
+    choice2: "It set a new index for each element in an array",
+    choice3: "It creates a for loop in the arrays",
+    choice4: "It calls a function for each element in an array",
   answer: 4,
  },
 ]
 
 const SCORE_POINTS = 100
-const MAX_QUESTIONS = 2
+const MAX_QUESTIONS = 5
 
 function startGame() {
  questionCounter = 0
  score = 0
- time = 75
+ time = 60
  availableQuestions = [...questions]
 
  timer = setInterval(function () {
@@ -85,32 +110,39 @@ function getNewQuestion() {
 
 // change colors of answers when correct and wrong
 choices.forEach(function (choice) {
- choice.addEventListener('click', e => {
-  if (!acceptingAnswers) return
-  
-  acceptingAnswers = false
-  const selectedChoice = e.target
-  const selectedAnswer = selectedChoice.dataset['number']
+ choice.addEventListener('click', function (e) {
+     if (!acceptingAnswers)
+       return;
 
-  let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect'
-  
-  if(classToApply === 'correct') {
-   incrementScore(SCORE_POINTS)
-  }
+     acceptingAnswers = false;
+     const selectedChoice = e.target;
+     const selectedAnswer = selectedChoice.dataset['number'];
 
-  selectedChoice.parentElement.classList.add(classToApply)
+     let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect';
 
-  setTimeout (() => {
-   selectedChoice.parentElement.classList.remove(classToApply)
-   getNewQuestion()
-  }, 1000)
- })
+     if (classToApply === 'correct') {
+       incrementScore(SCORE_POINTS);
+     } else {
+       classToApply === 'incorrect'
+       time -= 5
+     }
+
+     selectedChoice.parentElement.classList.add(classToApply);
+
+     setTimeout(function () {
+       selectedChoice.parentElement.classList.remove(classToApply);
+
+       getNewQuestion();
+     }, 1000);
+   })
 })
 
 // reduce score if the answer is wrong
-incrementScore = num => {
- score += num
- scoreText.innerText = score
-}
+function incrementScore(num) {
+    let num1 = score
+    let num2 = time
+    score += time
+    scoreText.innerText = score
+  }
 
 startGame()
