@@ -1,1 +1,2 @@
-# javascript-codequiz
+# Javascript Codequiz
+

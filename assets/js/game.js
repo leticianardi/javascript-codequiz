@@ -71,7 +71,7 @@ function startGame() {
    timerCountdown.textContent = time
 
    if (time <= 0) {
-    return window.location.assign('/end.html')
+    return window.location.assign('./end.html')
    }
  }, 1000)
 
@@ -83,7 +83,7 @@ function getNewQuestion() {
  if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
   localStorage.setItem('mostRecentScore', score)
 
-  return window.location.assign('/end.html')
+  return window.location.assign('./end.html')
   }
 
   //count questions on top of page
