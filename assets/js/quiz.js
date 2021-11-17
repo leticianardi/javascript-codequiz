@@ -2,7 +2,6 @@ const question = document.querySelector('#question');
 const letters = Array.from(document.querySelectorAll('.choice-text'));
 const progressText = document.querySelector('#progressText');
 const scoreText = document.querySelector('#score');
-const progressBarFull = document.querySelector('#progressBarFull');
 const timerCountdown = document.querySelector('#timerCountdown');
 
 let currentQuestion = {}
