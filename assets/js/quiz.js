@@ -121,11 +121,11 @@ answers.forEach(function (answer) {
 
      if (classToApply === 'correct') {
        incrementScore(SCORE_POINTS);
-       console.log('resposta certa');
+       console.log('right answer');
      } else {
        classToApply === 'incorrect'
        time -= 5
-       console.log('resposta errada');
+       console.log('wrong answer');
      }
 
      clickedAnswer.parentElement.classList.add(classToApply);
