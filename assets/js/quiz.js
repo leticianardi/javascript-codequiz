@@ -20,7 +20,7 @@ let questions = [
       b: "It prints a message in the console tab",
       c: "It loops through an array",
       d: "It adds a new element",
-    answer: 2,
+    answer: "b",
    },
    {
     question: "What's JavaScript?",
@@ -28,7 +28,7 @@ let questions = [
       b: "It's a scripting language",
       c:"It's the standar markup language for web pages",
       d:"It's a function on Python",
-    answer: 2,
+    answer: "b",
    },
    {
     question: "Which of the following examples is not an array?",
@@ -36,7 +36,7 @@ let questions = [
       b: "var house1 = new Array(5);",
       c: "var = window.alert('Front door open')",
       d: "var house = ['living room', 'bedroom', 'bathroom']",
-    answer: 3,
+    answer: "c",
    },
    {
     question: "What does Array.from() allow you to do?",
@@ -44,7 +44,7 @@ let questions = [
       b: "It creates a new variable",
       c: "It gathers all arrays you've created into a new array",
       d: "It prints the array elements on the console bowser",
-    answer: 1,
+    answer: "a",
    },
    {
     question: "What's the usage of Array.forEach()?",
@@ -52,7 +52,7 @@ let questions = [
       b: "It set a new index for each element in an array",
       c: "It creates a for loop in the arrays",
       d: "It calls a function for each element in an array",
-    answer: 4,
+    answer: "d",
    },
   
   ]
