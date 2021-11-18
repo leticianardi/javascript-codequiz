@@ -1,5 +1,5 @@
 const question = document.querySelector('#question');
-const choices = Array.from(document.querySelectorAll('.choice-text'));
+const answers = Array.from(document.querySelectorAll('.letter-text'));
 const progressText = document.querySelector('#progressText');
 const scoreText = document.querySelector('#score');
 const timerCountdown = document.querySelector('#timerCountdown');
@@ -16,45 +16,47 @@ var questionIndex = 0;
 let questions = [
   {
     question: "What's the Console keyword?",
-      choice1: "It consoles the user when they are crying",
-      choice2: "It prints a message in the console tab",
-      choice3: "It loops through an array",
-      choice4: "It adds a new element",
+      a: "It consoles the user when they are crying",
+      b: "It prints a message in the console tab",
+      c: "It loops through an array",
+      d: "It adds a new element",
     answer: 2,
    },
- {
-  question: "What's JavaScript?",
-    choice1: "It's a rule-based language for styling pages",
-    choice2: "It's a scripting language",
-    choice3:"It's the standar markup language for web pages",
-    choice4:"It's a function on Python",
-  answer: 2,
- },
- {
-  question: "Which of the following examples is not an array?",
-    choice1: "var house = new Array(10, 20, 30, 40, 50);",
-    choice2: "var house1 = new Array(5);",
-    choice3: "var = window.alert('Front door open')",
-    choice4: "var house = ['living room', 'bedroom', 'bathroom']",
-  answer: 3,
- },
- {
-  question: "What does Array.from() allow you to do?",
-    choice1: "It returns an array from any object with a length property",
-    choice2: "It creates a new variable",
-    choice3: "It gathers all arrays you've created into a new array",
-    choice4: "It prints the array elements on the console bowser",
-  answer: 1,
- },
- {
-  question: "What's the usage of Array.forEach()?",
-    choice1: "It sets a new name for each arry you've already writen",
-    choice2: "It set a new index for each element in an array",
-    choice3: "It creates a for loop in the arrays",
-    choice4: "It calls a function for each element in an array",
-  answer: 4,
- },
-]
+   {
+    question: "What's JavaScript?",
+      a: "It's a rule-based language for styling pages",
+      b: "It's a scripting language",
+      c:"It's the standar markup language for web pages",
+      d:"It's a function on Python",
+    answer: 2,
+   },
+   {
+    question: "Which of the following examples is not an array?",
+      a: "var house = new Array(10, 20, 30, 40, 50);",
+      b: "var house1 = new Array(5);",
+      c: "var = window.alert('Front door open')",
+      d: "var house = ['living room', 'bedroom', 'bathroom']",
+    answer: 3,
+   },
+   {
+    question: "What does Array.from() allow you to do?",
+      a: "It returns an array from any object with a length property",
+      b: "It creates a new variable",
+      c: "It gathers all arrays you've created into a new array",
+      d: "It prints the array elements on the console bowser",
+    answer: 1,
+   },
+   {
+    question: "What's the usage of Array.forEach()?",
+      a: "It sets a new name for each arry you've already writen",
+      b: "It set a new index for each element in an array",
+      c: "It creates a for loop in the arrays",
+      d: "It calls a function for each element in an array",
+    answer: 4,
+   },
+  
+  ]
+//
 
 const SCORE_POINTS = 100
 const MAX_QUESTIONS = 5
@@ -94,11 +96,10 @@ function getNewQuestion() {
  currentQuestion = availableQuestions[questionsIndex]
  question.innerText = currentQuestion.question
 
- // show the answers
- choices.forEach(function (choice)  {
-  const number = choice.dataset['number']
-  choice.innerText = currentQuestion['choice' + number]
- })
+  // show ansers
+ answers.forEach((answer) => {
+  answer.innerText = currentQuestion[answer.dataset["answer"]];
+  });
 
  // replace question 
  availableQuestions.splice(questionsIndex, 1)
@@ -107,28 +108,30 @@ function getNewQuestion() {
 }
 
 // change colors of answers when correct and wrong
-choices.forEach(function (choice) {
- choice.addEventListener('click', function (e) {
+answers.forEach(function (answer) {
+ answer.addEventListener('click', function (e) {
      if (!acceptingAnswers)
        return;
 
      acceptingAnswers = false;
-     const selectedChoice = e.target;
-     const selectedAnswer = selectedChoice.dataset['number'];
+     const clickedAnswer = e.target;
+     const answeredLetter = clickedAnswer.dataset['answer'];
 
-     let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect';
+     let classToApply = answeredLetter == currentQuestion.answer ? 'correct' : 'incorrect';
 
      if (classToApply === 'correct') {
        incrementScore(SCORE_POINTS);
+       console.log('resposta certa');
      } else {
        classToApply === 'incorrect'
        time -= 5
+       console.log('resposta errada');
      }
 
-     selectedChoice.parentElement.classList.add(classToApply);
+     clickedAnswer.parentElement.classList.add(classToApply);
 
      setTimeout(function () {
-       selectedChoice.parentElement.classList.remove(classToApply);
+       clickedAnswer.parentElement.classList.remove(classToApply);
 
        getNewQuestion();
      }, 1000);

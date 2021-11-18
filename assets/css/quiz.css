@@ -24,7 +24,7 @@ body {
  font-size: 1.5rem;
 }
 
-.choice-text {
+.letter-text {
  padding: 2rem;
  width: 100%;
  font-size: 1.5rem;
@@ -32,7 +32,7 @@ body {
 }
 
 .correct {
- background: linear-gradient(32deg, rgba(11, 223, 36) 0%, rgb(41, 232, 111) 100%);
+ background: linear-gradient(32deg, rgb(41, 232, 111), 0%, rgb(41, 232, 111) 100%);
 }
 
 .incorrect {
@@ -53,19 +53,4 @@ body {
 .hud-main-text {
  text-align: center;
 }
-
-/* #progessBar {
- width: 20rem;
- height: 3rem;
- border: 0.2rem solid green;
- margin-top: 2rem;
- border-radius: 50px;
- overflow: hidden;
-}
-
-#progressBarFull {
- height: 100%;
- background: green;
- width: 0%;
-} */
 
